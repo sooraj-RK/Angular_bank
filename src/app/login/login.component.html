@@ -4,13 +4,13 @@
     <h1> Sign in to your Bank Account</h1>
     <form action="">
         <div class="p-3 mt-2">
-            <input #acno id="acid" name="accnum1" class="form-control" type="text" [placeholder]="Inputplaceholder">
+            <input [(ngModel)]="acno"  id="acid" name="accnum1" class="form-control" type="text" [placeholder]="Inputplaceholder">
         </div>
         <div class="p-3 mt-2">
-            <input  #psw id="psw1" name="passwrd1" class="form-control" type="password" placeholder="Enter your password">
+            <input [(ngModel)]="psw" id="psw1" name="passwrd1" class="form-control" type="password" placeholder="Enter your password">
         </div>
         <div class="p-3 mt-2">
-            <button type="button" (click)="login(acno,psw)" class="btn btn-outline-light">login</button>
+            <button type="button" (click)="login()" class="btn btn-outline-light">login</button>
         </div>
     </form>
 </div>
