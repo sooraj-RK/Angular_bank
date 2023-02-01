@@ -1,0 +1,16 @@
+<h4 class="ms-3 p-2 mt-3 text-success">{{data}}</h4>
+
+<div class="container w-50 border  text-center p-5 mt-5">
+    <h1> Sign in to your Bank Account</h1>
+    <form action="">
+        <div class="p-3 mt-2">
+            <input (change)="acnoChange($event)" id="acno" name="accno1" class="form-control" type="text" [placeholder]="Inputplaceholder">
+        </div>
+        <div class="p-3 mt-2">
+            <input (change)="paswrdchange($event)" id="accpass" name="accpass1" class="form-control" type="password" placeholder="Enter your password">
+        </div>
+        <div class="p-3 mt-2">
+            <button type="button" (click)="login()" class="btn btn-outline-light">login</button>
+        </div>
+    </form>
+</div>
