@@ -12,7 +12,7 @@ export class LoginComponent {
   Inputplaceholder="Account Number"
 
   acno=''
-  // or accno:any
+   // or accno:any
   psw=''
 
   userDetails:any={
@@ -28,21 +28,59 @@ export class LoginComponent {
 
   }
 
-  login(){
-    alert("login clicked")
-  }
+  // login(){
+  //   var accnum=this.acno
+  //   var psw= this.psw
+  //   var userDetails=this.userDetails
+  //   if(accnum in userDetails){
+  //     if(psw==userDetails[accnum]["password"]){
+  //       alert ("login success")
 
-  acnoChange(event:any){
-    this.acno=event.target.value
-    console.log(this.acno)
+  //     }
+  //     else{
+  //       alert("incorrect password")
+  //     }
+  //   }
+  //   else{
+  //     alert("account number incorrect or not registered yet")
+  //   }
     
-  }
-  paswrdchange(event:any){
-    this.psw=event.target.value
-    console.log(this.psw);
+  // }
+
+  // acnoChange(event:any){
+  //   this.acno=event.target.value
+  //   console.log(this.acno)
     
-  }
+  // }
+  // paswrdchange(event:any){
+  //   this.psw=event.target.value
+  //   console.log(this.psw);
+    
+  // }
 
   
 
+
+
+login(a:any ,b:any){
+  
+  
+  var acnum=a.value
+  var psw= b.value
+    
+  var userDetails=this.userDetails
+  if(acnum in userDetails){
+    if(psw==userDetails[acnum]["password"]){
+      alert ("login success")
+
+    }
+    else{
+      alert("incorrect password")
+    }
+  }
+  else{
+    alert("account number incorrect or not registered yet")
+  }
+  
+}
 }
