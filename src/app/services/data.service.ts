@@ -1,3 +1,4 @@
+import { transition } from '@angular/animations';
 import { enableProdMode, Injectable } from '@angular/core';
 
 
@@ -7,14 +8,15 @@ import { enableProdMode, Injectable } from '@angular/core';
 export class DataService {
 
   currentUser:any
+  currentAcno:any
 
   constructor() { }
   
   userDetails:any={
-    1000:{acno:1000,username:"anu",password:"abc123",balance:0},
-    1001:{acno:1001,username:"amal",password:"abc123",balance:0},
-    1002:{acno:1002,username:"arun",password:"abc123",balance:0},
-    1003:{acno:1003,username:"akil",password:"abc123",balance:0},
+    1000:{acno:1000,username:"anu",password:"abc123",balance:0, transaction:[]},
+    1001:{acno:1001,username:"amal",password:"abc123",balance:0 , transaction:[]},
+    1002:{acno:1002,username:"arun",password:"abc123",balance:0 , transaction:[]},
+    1003:{acno:1003,username:"akil",password:"abc123",balance:0 , transaction:[]}
     
   }
   register(uname:any,acno:any,psw:any){
@@ -36,7 +38,9 @@ login(acno:any,psw:any){
   if(acno in userDetails){
     if(psw==userDetails[acno]["password"]){
       this.currentUser=userDetails[acno]["username"]
-      console.log(this.currentUser);
+      // console.log(this.currentUser);
+
+      this.currentAcno=acno
       
     return true
     }
@@ -60,7 +64,12 @@ deposit(acnum:any,password: any ,amount:any){
 
       userDetails[acnum]["balance"]+=amnt
 
-      console.log(userDetails);
+      // console.log(userDetails);
+
+      // transaction data store
+
+      userDetails[acnum]["transaction"].push({Type:"CREDIT",amount:amnt})
+
       
 
       return userDetails[acnum]["balance"]
@@ -80,9 +89,14 @@ withdraw(acnum:any,password: any ,amount:any){
 
   if (acnum in userDetails){
     if (password == userDetails[acnum]["password"]){
-      if(amnt < userDetails[acnum]["balance"]){
+      if(amnt <= userDetails[acnum]["balance"]){
 
       userDetails[acnum]["balance"]-= amnt
+
+      userDetails[acnum]["transaction"].push({Type:"DEBIT",amount:amnt})
+
+      console.log(userDetails);
+      
 
       console.log(userDetails);
 
@@ -104,4 +118,9 @@ else{
 }
 
 }
+
+getTransaction (acno:any){
+  return this.userDetails[acno]["transaction"]
+}
+
 }
