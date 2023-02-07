@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { enableProdMode, Injectable } from '@angular/core';
+
 
 @Injectable({
   providedIn: 'root'
@@ -48,5 +49,59 @@ login(acno:any,psw:any){
     return false
   }
   
+}
+deposit(acnum:any,password: any ,amount:any){
+  let userDetails =this.userDetails
+  //convert string amount to number
+  var amnt = parseInt(amount)
+
+  if (acnum in userDetails){
+    if (password == userDetails[acnum]["password"]){
+
+      userDetails[acnum]["balance"]+=amnt
+
+      console.log(userDetails);
+      
+
+      return userDetails[acnum]["balance"]
+    }
+    else{
+      return false
+    }
+  }
+  else{
+    return false
+  }
+}
+
+withdraw(acnum:any,password: any ,amount:any){
+  let userDetails =this.userDetails
+  var amnt = parseInt(amount)
+
+  if (acnum in userDetails){
+    if (password == userDetails[acnum]["password"]){
+      if(amnt < userDetails[acnum]["balance"]){
+
+      userDetails[acnum]["balance"]-= amnt
+
+      console.log(userDetails);
+
+      return userDetails[acnum]["balance"]
+    }
+    else{
+      alert('insufficient balance')
+      return false
+    }
+  }
+  else{
+    alert("incorrect password")
+    return false
+  }
+}
+else{
+  alert('incorrect acnum')
+  return false
+}
+
 }
 }
