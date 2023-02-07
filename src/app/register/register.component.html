@@ -1,16 +1,16 @@
 <div class="container w-50 border  text-center p-5 mt-5">
     <h1> create your Bank Account</h1>
-    <form action="">
+    <form [formGroup]="registerForm" action="">
         <div class="p-3 mt-2">
-            <input [(ngModel)]="uname" id="unamid" name="accnum1" class="form-control" type="text"
+            <input formControlName="uname" id="unamid" name="accnum1" class="form-control" type="text"
                 placeholder="Enter user name">
         </div>
         <div class="p-3 mt-2">
-            <input [(ngModel)]="acno" id="acid" name="passwrd1" class="form-control" type="text"
+            <input  formControlName="acno" id="acid" name="passwrd1" class="form-control" type="text"
                 placeholder="Enter account number">
         </div>
         <div class="p-3 mt-2">
-            <input [(ngModel)]="psw" id="acid" name="passwrd1" class="form-control" type="password"
+            <input formControlName="psw" id="acid" name="passwrd1" class="form-control" type="password"
                 placeholder="Enter your password">
         </div>
 
