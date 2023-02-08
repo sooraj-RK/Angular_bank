@@ -5,13 +5,23 @@
             <input formControlName="uname" id="unamid" name="accnum1" class="form-control" type="text"
                 placeholder="Enter user name">
         </div>
+        <div *ngIf="this.registerForm.get('uname')?.errors && this.registerForm.get('uname')?.touched">
+            <p class="text-danger">accept only characters</p>
+
+        </div>
         <div class="p-3 mt-2">
             <input  formControlName="acno" id="acid" name="passwrd1" class="form-control" type="text"
                 placeholder="Enter account number">
         </div>
+        <div *ngIf="this.registerForm.get('acno')?.errors && this.registerForm.get('acno')?.touched">
+            <p class="text-danger">accept only numbers</p>
+        </div>
         <div class="p-3 mt-2">
             <input formControlName="psw" id="acid" name="passwrd1" class="form-control" type="password"
                 placeholder="Enter your password">
+        </div>
+        <div *ngIf="this.registerForm.get('psw')?.errors && this.registerForm.get('psw')?.touched">
+            <p class="text-danger">accept only numbers and characters</p>
         </div>
 
 

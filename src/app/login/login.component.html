@@ -2,12 +2,12 @@
 
 <div class="container w-50 border  text-center p-5 mt-5">
     <h1> Sign in to your Bank Account</h1>
-    <form action="" (ngSubmit)="login()">
+    <form action="" [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="p-3 mt-2">
-            <input [(ngModel)]="acno"  id="acid" name="accnum1" class="form-control" type="text" [placeholder]="Inputplaceholder">
+            <input formControlName="acno"  id="acid" name="accnum1" class="form-control" type="text" [placeholder]="Inputplaceholder">
         </div>
         <div class="p-3 mt-2">
-            <input [(ngModel)]="psw" id="psw1" name="passwrd1" class="form-control" type="password" placeholder="Enter your password">
+            <input formControlName="psw" id="psw1" name="passwrd1" class="form-control" type="password" placeholder="Enter your password">
         </div>
         <div class="p-3 mt-2">
             <button type="submit"  class="btn btn-outline-light">login</button>
