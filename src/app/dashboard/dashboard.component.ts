@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
-import { enableProdMode } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,6 +10,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class DashboardComponent implements OnInit {
   user:any
+  acno:any
+  
 
   // acno:any
   // psw:any
@@ -19,7 +21,7 @@ export class DashboardComponent implements OnInit {
   // psw1:any
   // amnt1:any
 
-  constructor (private ds:DataService,private fb:FormBuilder){
+  constructor (private ds:DataService,private router:Router,private fb:FormBuilder){
     this.user =this.ds.currentUser
   }
 
@@ -38,8 +40,11 @@ export class DashboardComponent implements OnInit {
 
 
   })
-ngOnInit(): void{
-  
+ngOnInit(): void {
+  if (!localStorage.getItem("currentAcno")){
+    alert('please login')
+    this.router.navigateByUrl("")
+  }
 }
 
 deposit(){
@@ -82,6 +87,14 @@ else{
 }
 
 }
+logout(){
+  localStorage.removeItem("currentUser")
+  localStorage.removeItem("currentAcno")
+  this.router.navigateByUrl("")
+}
 
+deleteParent(){
+  this.acno=JSON.parse(localStorage.getItem("currentAcno") || "")
+}
 
 }
